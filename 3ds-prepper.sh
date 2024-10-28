@@ -32,7 +32,7 @@ echo "    \ \ | | | \`--. \______|  __/ '__/ _ \ '_ \| '_ \ / _ \ '__|"
 echo ".___/ / |/ / /\__/ /      | |  | | |  __/ |_) | |_) |  __/ |   "
 echo "\____/|___/  \____/       \_|  |_|  \___| .__/| .__/ \___|_|   "
 echo "                                        | |   | |              "
-echo "            v0.0.0                      |_|   |_| Ellie Johnston"
+echo "            v0.0.1                      |_|   |_| Ellie Johnston"
 echo "\n Press [ENTER]"
 read DUMMY
 echo "Enter your Hax type" 

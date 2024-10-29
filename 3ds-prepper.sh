@@ -76,6 +76,8 @@ echo "...Downloading Universal Updater..."
 wget -q -O ./3ds-prepper-tmp/UUP.cia $(curl -s https://api.github.com/repos/Universal-Team/Universal-Updater/releases/latest | jq --raw-output '.assets[1] | .browser_download_url')
 echo "...Downloading GodMode9..."
 wget -q -O ./3ds-prepper-tmp/GM9_latest.zip $(curl -s https://api.github.com/repos/d0k3/GodMode9/releases/latest | jq --raw-output '.assets[0] | .browser_download_url')
+echo "...Downloading GM9 megascript..."
+wget -q -O ./3ds-prepper-tmp/GM9_megascript.gm9 $(cur -s https://api.github.com/repos/annson20/GM9Megascript/releases/latest | jq --raw-output '.assets[0] | .browser_download_url')
 if [ ! -d ./3ds-prepper-tmp/luma_extr ]; then
     mkdir ./3ds-prepper-tmp/luma_extr
 fi
@@ -94,19 +96,19 @@ unzip -q -d ./3ds-prepper-tmp/gm9_extr ./3ds-prepper-tmp/GM9_latest.zip
 cd ./3ds-prepper-tmp
 mkdir NEWSD
 echo "...finalizing..."
-cp ./luma_extr/boot.firm ./NEWSD
-cp ./luma_extr/boot.3dsx ./NEWSD
+cp ./luma_extr/boot.* ./NEWSD
 mkdir ./NEWSD/luma
 mkdir ./NEWSD/luma/payloads
 cp ./gm9_extr/GodMode9.firm ./NEWSD/luma/payloads
 mkdir ./NEWSD/boot9strap
 mkdir ./NEWSD/3ds
 mkdir ./NEWSD/CIAs
-cp ./FBI.3dsx ./NEWSD/3ds
-cp ./FBI.cia ./NEWSD/CIAs
-cp ./UUP.cia ./NEWSD/CIAs
-cp ./b9s_extr/boot9strap.firm ./NEWSD/boot9strap
-cp ./b9s_extr/boot9strap.firm.sha ./NEWSD/boot9strap
+mkdir ./NEWSD/gm9
+mkdir ./NEWSD/gm9/scripts
+cp ./*.3dsx ./NEWSD/3ds
+cp ./*.cia ./NEWSD/CIAs
+cp ./b9s_extr/boot9strap.* ./NEWSD/boot9strap
+cp ./*.gm9 ./NEWSD/gm9
 if [ ! -d ../$TARGET ]; then 
     mkdir ../$TARGET
 fi

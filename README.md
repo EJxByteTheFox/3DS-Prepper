@@ -8,7 +8,7 @@ A light shell script for preparing modded 3ds SD cards
 What it does!
 -------------
 
-the script will download the latest version of Luma3DS, GodMode9, boot9strap, FBI, and universal updater
+the script will download the latest version of Luma3DS, GodMode9, boot9strap, FBI, GM9Megascript, and universal updater
 
 usage
 -----

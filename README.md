@@ -1,6 +1,8 @@
 3DS-Prepper
 ===========
 
+made with love (and shell)
+
 A light shell script for preparing modded 3ds SD cards
 
 What it does!

@@ -32,7 +32,7 @@ echo "    \ \ | | | \`--. \______|  __/ '__/ _ \ '_ \| '_ \ / _ \ '__|"
 echo ".___/ / |/ / /\__/ /      | |  | | |  __/ |_) | |_) |  __/ |   "
 echo "\____/|___/  \____/       \_|  |_|  \___| .__/| .__/ \___|_|   "
 echo "                                        | |   | |              "
-echo "            v1.3.1                      |_|   |_| Ellie Johnston"
+echo "            v1.3.2                      |_|   |_| Ellie Johnston"
 echo "\n Press [ENTER]"
 read DUMMY
 read -p "Target folder: " TARGET 
@@ -66,7 +66,7 @@ case $HAXXXX in
         echo "********************************************"
         echo "...extracting skaterhax..."
         mkdir ./3ds-prepper-tmp/skater
-        unzip -q -d $SKATERLOC ./3ds-prepper-tmp/skater/
+        unzip -q -d ./3ds-prepper-tmp/skater/ $SKATERLOC
         echo "...installing base luma from zip..."
         mkdir $TARGET/3ds
         mkdir $TARGET/boot9strap

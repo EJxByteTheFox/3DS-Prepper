@@ -32,7 +32,7 @@ echo "    \ \ | | | \`--. \______|  __/ '__/ _ \ '_ \| '_ \ / _ \ '__|"
 echo ".___/ / |/ / /\__/ /      | |  | | |  __/ |_) | |_) |  __/ |   "
 echo "\____/|___/  \____/       \_|  |_|  \___| .__/| .__/ \___|_|   "
 echo "                                        | |   | |              "
-echo "            v1.3.2                      |_|   |_| Ellie Johnston"
+echo "            v1.3.5                      |_|   |_| Ellie Johnston"
 echo "\n Press [ENTER]"
 read DUMMY
 read -p "Target folder: " TARGET 
@@ -48,6 +48,8 @@ echo "================"
 read -p "Hax: " HAXXXX
 
 HAXXXX=$(echo "$HAXXXX" | tr '[:upper:]' '[:lower:]')
+
+rm -fr $TARGET/*
 
 mkdir ./3ds-prepper-tmp
 
@@ -68,12 +70,12 @@ case $HAXXXX in
         mkdir ./3ds-prepper-tmp/skater
         unzip -q -d ./3ds-prepper-tmp/skater/ $SKATERLOC
         echo "...installing base luma from zip..."
-        mkdir -q $TARGET/3ds 
-        mkdir -q $TARGET/boot9strap
-        mkdir -q $TARGET/config
+        mkdir $TARGET/3ds 
+        mkdir $TARGET/boot9strap
+        mkdir $TARGET/config
         cp -fr ./3ds-prepper-tmp/skater/3ds/* $TARGET/3ds
         cp -fr ./3ds-prepper-tmp/skater/boot9strap/* $TARGET/boot9strap
-        cp -ft ./3ds-prepper-tmp/skater/config/* $TARGET/config
+        cp -fr ./3ds-prepper-tmp/skater/config/* $TARGET/config
         cp -f ./3ds-prepper-tmp/skater/*.bin $TARGET
         cp -f ./3ds-prepper-tmp/skater/*.3dsx $TARGET
         cp -f ./3ds-prepper-tmp/skater/*.firm $TARGET
@@ -81,7 +83,7 @@ case $HAXXXX in
 
 esac
 
-if [ "$HAXXXX" -ne "skaterhax" ]; then
+if [ ! "$HAXXXX" = "skaterhax" ]; then
 echo "...Downloading Luma3DS..."
 wget -q -O ./3ds-prepper-tmp/luma_latest.zip $(curl -s https://api.github.com/repos/LumaTeam/Luma3DS/releases/latest | jq --raw-output '.assets[0] | .browser_download_url') 
 echo "...Downloading boot9strap..."
@@ -96,7 +98,7 @@ echo "...Downloading GodMode9..."
 wget -q -O ./3ds-prepper-tmp/GM9_latest.zip $(curl -s https://api.github.com/repos/d0k3/GodMode9/releases/latest | jq --raw-output '.assets[0] | .browser_download_url')
 echo "...Downloading GM9 megascript..."
 wget -q -O ./3ds-prepper-tmp/GM9_megascript.gm9 $(curl -s https://api.github.com/repos/annson20/GM9Megascript/releases/latest | jq --raw-output '.assets[0] | .browser_download_url')
-if [ "$HAXXXX" -ne "skaterhax" ]; then
+if [ "$HAXXXX" = "skaterhax" ]; then
 if [ ! -d ./3ds-prepper-tmp/luma_extr ]; then
     mkdir ./3ds-prepper-tmp/luma_extr
 fi
@@ -108,7 +110,7 @@ if [ ! -d ./3ds-prepper-tmp/gm9_extr ]; then
     mkdir ./3ds-prepper-tmp/gm9_extr
 fi
 
-if [ "$HAXXXX" -ne "skaterhax" ]; then
+if [ ! "$HAXXXX" = "skaterhax" ]; then
 echo "...extracting Luma3DS..."
 unzip -q -d ./3ds-prepper-tmp/luma_extr ./3ds-prepper-tmp/luma_latest.zip
 echo "...extracting boot9strap..."
@@ -119,7 +121,7 @@ unzip -q -d ./3ds-prepper-tmp/gm9_extr ./3ds-prepper-tmp/GM9_latest.zip
 cd ./3ds-prepper-tmp
 mkdir NEWSD
 echo "...finalizing..."
-if [ "$HAXXXX" -ne "skaterhax" ]; then
+if [ ! "$HAXXXX" = "skaterhax" ]; then
 cp ./luma_extr/boot.* ./NEWSD
 mkdir ./NEWSD/luma
 mkdir ./NEWSD/luma/payloads

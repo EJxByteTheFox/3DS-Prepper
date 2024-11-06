@@ -39,27 +39,6 @@ echo "Enter your Hax type"
 echo "Currently supported are:"
 echo " - KartDLPhax"
 echo "========================="
-read -p "Hax type: " HAXXXX
-HAXXXX=$(echo "$HAXXXX" | tr '[:upper:]' '[:lower:]')
-case "$HAXXXX" in 
-    "kartdlphax" ) 
-        echo "would you like to set up a Source system for KartDLPhax"
-        read -p "[Y/n]" CHOICE
-        CHOICE=$(echo "$CHOICE" | tr '[:upper:]' '[:lower:]')
-        if [ "$CHOICE"-eq "y" ]; then
-            SSETUP=1
-            read -p "Source system folder: " SOURCE
-        fi
-    ;;
-esac
-if [ $SSETUP -eq 1 ]; then
-    if [ $("$HAXXXX") -eq "kartdlphax" ]; then
-        if [ -d ./3ds-prepper-tmp ]; then
-            mkdir ./3ds-prepper-tmp/kartdlp
-        fi
-        wget -q -O ./3ds-prepper-tmp/kartdlp/plugin.3gx $(curl -s https://api.github.com/repos/PabloMK7/kartdlphax/releases/latest | jq --raw-output '.assets[0] | .browser_download_url') 
-    fi
-fi
 read -p "Target folder: " TARGET 
 if [ -d ./3ds-prepper-tmp ]; then
     rm -fr ./3ds-prepper-tmp
@@ -108,7 +87,7 @@ mkdir ./NEWSD/gm9/scripts
 cp ./*.3dsx ./NEWSD/3ds
 cp ./*.cia ./NEWSD/CIAs
 cp ./b9s_extr/boot9strap.* ./NEWSD/boot9strap
-cp ./*.gm9 ./NEWSD/gm9
+cp ./*.gm9 ./NEWSD/gm9/scripts/
 if [ ! -d $TARGET ]; then 
     mkdir $TARGET
 fi

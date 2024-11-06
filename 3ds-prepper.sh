@@ -56,7 +56,7 @@ wget -q -O ./3ds-prepper-tmp/UUP.cia $(curl -s https://api.github.com/repos/Univ
 echo "...Downloading GodMode9..."
 wget -q -O ./3ds-prepper-tmp/GM9_latest.zip $(curl -s https://api.github.com/repos/d0k3/GodMode9/releases/latest | jq --raw-output '.assets[0] | .browser_download_url')
 echo "...Downloading GM9 megascript..."
-wget -q -O ./3ds-prepper-tmp/GM9_megascript.gm9 $(cur -s https://api.github.com/repos/annson20/GM9Megascript/releases/latest | jq --raw-output '.assets[0] | .browser_download_url')
+wget -q -O ./3ds-prepper-tmp/GM9_megascript.gm9 $(curl -s https://api.github.com/repos/annson20/GM9Megascript/releases/latest | jq --raw-output '.assets[0] | .browser_download_url')
 if [ ! -d ./3ds-prepper-tmp/luma_extr ]; then
     mkdir ./3ds-prepper-tmp/luma_extr
 fi

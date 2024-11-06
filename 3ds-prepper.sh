@@ -35,10 +35,6 @@ echo "                                        | |   | |              "
 echo "            v1.2.2                      |_|   |_| Ellie Johnston"
 echo "\n Press [ENTER]"
 read DUMMY
-echo "Enter your Hax type" 
-echo "Currently supported are:"
-echo " - KartDLPhax"
-echo "========================="
 read -p "Target folder: " TARGET 
 if [ -d ./3ds-prepper-tmp ]; then
     rm -fr ./3ds-prepper-tmp

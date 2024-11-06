@@ -136,7 +136,10 @@ cp ./*.3dsx ./NEWSD/3ds
 cp ./*.cia ./NEWSD/CIAs
 cp ./b9s_extr/boot9strap.* ./NEWSD/boot9strap
 cp ./*.gm9 ./NEWSD/gm9/scripts/
+
+if [ ! "$HAXXXX" = "skaterhax" ]; then
 if [ ! -d $TARGET ]; then 
     mkdir $TARGET
+fi
 fi
 cp -fr ./NEWSD/* $TARGET

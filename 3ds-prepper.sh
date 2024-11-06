@@ -77,7 +77,6 @@ case $HAXXXX in
         cp -f ./3ds-prepper-tmp/skater/*.bin $TARGET
         cp -f ./3ds-prepper-tmp/skater/*.3dsx $TARGET
         cp -f ./3ds-prepper-tmp/skater/*.firm $TARGET
-        exit
     ;;
 
 esac
